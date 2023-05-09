@@ -17,15 +17,17 @@
     </div>
 @endif
 
-@if (Auth::check())
-    <div class="pt-15 w-4/5 m-auto">
-        <a 
-            href="/blog/create"
-            class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
-            Create post
-        </a>
-    </div>
-@endif
+@auth
+    @if (auth()->user()->level === 'admin')
+        <div class="pt-15 w-4/5 m-auto">
+            <a 
+                href="/blog/create"
+                class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
+                Create post
+            </a>
+        </div>
+    @endif
+@endauth
 
 @foreach ($posts as $post)
     <div class="sm:grid grid-cols-2 gap-20 w-4/5 mx-auto py-15 border-b border-gray-200">
