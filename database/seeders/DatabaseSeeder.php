@@ -41,5 +41,8 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
+
+       
+
     }
 }
