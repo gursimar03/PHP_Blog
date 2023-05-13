@@ -40,4 +40,6 @@ Route::put('/users/{id}', [\App\http\Controllers\UserController::class,'update']
 
 Route::get('/users/{id}', [\App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
 
+Route::post('change-password',[\App\Http\Controllers\UserController::class,'updatePass'])->name('change.password');
+
 
