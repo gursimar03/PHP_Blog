@@ -43,3 +43,10 @@ Route::get('/users/{id}', [\App\Http\Controllers\UserController::class, 'destroy
 Route::post('change-password',[\App\Http\Controllers\UserController::class,'updatePass'])->name('change.password');
 
 
+//search routes
+
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
+Route::get('/search/tag/{tag}', [\App\Http\Controllers\SearchController::class, 'byTag'])->name('search.tag');
+
+
+

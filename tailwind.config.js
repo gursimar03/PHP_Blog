@@ -1,13 +1,14 @@
 module.exports = {
-  purge: [
-    './resources/views/**/*.blade.php',
-    './resources/css/**/*.css',
+  content: [
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+    "./resources/**/*.vue",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
-    extend: {}
+    extend: {},
   },
-  variants: {},
   plugins: [
-    require('@tailwindcss/ui'),
-  ]
+      require('flowbite/plugin')
+  ],
 }

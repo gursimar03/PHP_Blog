@@ -23,8 +23,11 @@ class PostsController extends Controller
      */
     public function index()
     {
+        $tags = Tag::all();
+
         return view('blog.index')
-            ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
+            ->with('posts', Post::orderBy('updated_at', 'DESC')->get())
+            ->with('tags', $tags);
     }
 
     /**
