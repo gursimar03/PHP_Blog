@@ -28,13 +28,19 @@ class SearchController extends Controller
 
     public function byTag($tag)
     {
-        $posts = Post::where('tags', 'like', "%$tag%")->get();
+       // join tags and posts table 
+        $posts = Post::join('post_tag', 'posts.id', '=', 'post_tag.post_id')
+                     ->join('tags', 'post_tag.tag_id', '=', 'tags.id')
+                     ->where('tags.name', '=', $tag)
+                     ->get();
 
-        //adding tags to post
-        foreach ($posts as $post) {
+           //adding tags to post
+           foreach ($posts as $post) {
             $post->tags = $post->tags()->get();
         }
+    
 
-        return view('layouts.search')->with('posts', $posts);
+        return view('layouts.search')->with('posts', $posts)
+                                     ->with('tags', Tag::all());
     }
 }

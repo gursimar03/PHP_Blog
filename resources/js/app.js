@@ -1,7 +1,7 @@
 require('./bootstrap');
 
 import Choices from 'choices.js';
-
+import 'flowbite';
 const choicesElements = document.querySelectorAll('.js-choices');
 
 choicesElements.forEach((element) => {
