@@ -26,4 +26,16 @@ class Post extends Model
             ]
         ];
     }
+    
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+    
+    public function assignTags($tags)
+    {
+        // Sync the tags for the post
+        $this->tags()->sync($tags);
+    }
+    
 }

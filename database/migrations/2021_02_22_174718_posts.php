@@ -18,7 +18,9 @@ class Posts extends Migration
         if (!Schema::hasTable('posts')) {
             Schema::create('posts', function (Blueprint $table){
                 $table->increments('id');
-                $table->string('slug');
+                // slug is a URL friendly version of the title
+                // if slug is null it will be auto generated from the title and default 
+                $table->string('slug')->nullable() ->default(null);
                 $table->string('title');
                 $table->longText('description');
                 $table->string('image_path');

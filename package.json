@@ -21,5 +21,9 @@
         "postcss-nested": "^4.2",
         "tailwindcss": "^1.8",
         "vue-template-compiler": "^2.6.11"
+    },
+    "dependencies": {
+        "choices.js": "^10.2.0",
+        "tw-elements": "^1.0.0-beta2"
     }
 }

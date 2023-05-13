@@ -50,13 +50,23 @@
                     class="hidden">
             </label>
         </div>
+        <div>
+            <lable for="tags">Tags</lable>
+            <select name="tags[]" class="w-full js-choices" multiple>
+    @foreach($tags as $tag)
+        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+    @endforeach
+</select>
 
-        <button    
-            type="submit"
-            class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
-            Submit Post
-        </button>
+            <label data-te-select-label-ref>Example label</label>
+            <button    
+                type="submit"
+                class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+                Submit Post
+            </button>
+        </div>
     </form>
 </div>
 
 @endsection
+

@@ -17,6 +17,14 @@
     <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
         {{ $post->description }}
     </p>
+
+    <!-- tags -->
+    <div class="text-gray-500 text-xs pb-10">
+        @foreach ($post->tags as $tag)
+            <div class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                {{ $tag->name }}
+            </div> 
+        @endforeach
 </div>
 
 @endsection 

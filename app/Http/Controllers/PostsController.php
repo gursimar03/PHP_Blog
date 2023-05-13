@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Tag;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+
+
 
 class PostsController extends Controller
 {
@@ -31,7 +34,10 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+
+        //send tags to the view
+        return view('blog.create')->with('tags', Tag::all());
+
     }
 
     /**
@@ -47,22 +53,27 @@ class PostsController extends Controller
             'description' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
         ]);
-
+    
         $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
-
+    
         $request->image->move(public_path('images'), $newImageName);
-
-        Post::create([
+    
+        $post = Post::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
             'image_path' => $newImageName,
             'user_id' => auth()->user()->id
         ]);
-
+    
+        // Get the selected tags and attach them to the new post
+        $tags = $request->input('tags');
+        $post->tags()->attach($tags);
+    
         return redirect('/blog')
             ->with('message', 'Your post has been added!');
     }
+    
 
     /**
      * Display the specified resource.
@@ -72,8 +83,13 @@ class PostsController extends Controller
      */
     public function show($slug)
     {
+        // get tags for the post
+        $tags = Post::where('slug', $slug)->first()->tags;
+
         return view('blog.show')
-            ->with('post', Post::where('slug', $slug)->first());
+            ->with('post', Post::where('slug', $slug)->first())
+            ->with('tags', $tags);
+    
     }
 
     /**
@@ -100,15 +116,34 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);
 
-        Post::where('slug', $slug)
-            ->update([
-                'title' => $request->input('title'),
-                'description' => $request->input('description'),
-                'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
-                'user_id' => auth()->user()->id
-            ]);
+        if ($request->image) {
+            $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
+
+            $request->image->move(public_path('images'), $newImageName);
+
+            Post::where('slug', $slug)
+                ->update([
+                    'title' => $request->input('title'),
+                    'description' => $request->input('description'),
+                    'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
+                    'image_path' => $newImageName,
+                    'user_id' => auth()->user()->id
+                ]);
+        }
+        else{
+            Post::where('slug', $slug)
+                ->update([
+                    'title' => $request->input('title'),
+                    'description' => $request->input('description'),
+                    'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
+                    'user_id' => auth()->user()->id
+                ]);
+        }
+
+
 
         return redirect('/blog')
             ->with('message', 'Your post has been updated!');
