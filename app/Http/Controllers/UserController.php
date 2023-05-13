@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -18,65 +19,49 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the user profile.
-     *
-     * @return \Illuminate\View\View
-     */
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+    $user->name = $request->input('name');
+    $user->save();
+
+    return redirect()->route('user.profile');
+    }
+
     public function userProfile()
     {
-        return view('auth.profile', ['user' => Auth::user()]);
+        $user = auth()->user();
+    return view('auth.profile', compact('user'));
     }
 
-    public function showRenameForm()
+    public function distroy($id)
     {
-        return view('auth.rename');
+        $user = User::findOrFail($id);
+    $user->delete();
+
+    return redirect()->route('admin.userboard');
     }
 
-    public function updateName(Request $request)
+    public function updateRole(Request $request, $id)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255', Rule::unique('users')->ignore(Auth::user())],
-        ]);
-
-        $user = Auth::user();
-        $user->name = $request->name;
+        $user = User::findOrFail($id);
+    
+        $user->level = $request->input('level');
         $user->save();
-
-        return redirect()->route('user.profile')->with('success', 'Your name has been updated.');
+    
+        return redirect()->route('admin.userboard', $user->id);
     }
-
-    public function showChangePasswordForm()
-    {
-        return view('auth.change-password');
+    
+    public function getPostCount($id)
+{
+    $user = User::find($id);
+    if (!$user) {
+        return abort(404);
     }
+    $count = $user->posts()->count();
+    return view('users.postcount', ['count' => $count, 'user' => $user]);
+}
 
-    public function updatePassword(Request $request)
-    {
-        $request->validate([
-            'current_password' => ['required', 'string'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-
-        $user = Auth::user();
-        $currentPassword = $user->password;
-
-        if (Hash::check($request->current_password, $currentPassword)) {
-            $user->password = Hash::make($request->password);
-            $user->save();
-
-            return redirect()->route('user.profile')->with('success', 'Your password has been updated.');
-        } else {
-            return back()->withErrors(['current_password' => 'The current password you entered is incorrect.']);
-        }
-    }
-
-    public function deleteAccount()
-    {
-        Auth::user()->delete();
-
-        return redirect()->route('home')->with('success', 'Your account has been deleted.');
-    }
 
     
 }

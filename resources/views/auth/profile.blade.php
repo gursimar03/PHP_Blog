@@ -1,44 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
+        @auth
+            @if (auth()->user()->level === 'admin')
+                <div class="pt-15 w-4/5 m-auto">
+                    <a 
+                        href="/admin"
+                        class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
+                        Admin Dashboard
+                    </a>
+                </div>
+            @endif
+        @endauth
     <div class="container mx-auto py-8">
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <h1 class="text-gray-700 font-bold text-2xl pb-4">{{ Auth::user()->name }}</h1>
             <p class="text-gray-700 pb-4">{{ Auth::user()->email }}</p>
-            <form method="POST" action="{{ route('user.rename') }}">
-                @csrf
-                <div class="mb-4">
-                    <label for="name" class="block text-gray-700 font-bold mb-2">Rename:</label>
-                    <input type="text" name="name" id="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="{{ Auth::user()->name }}" required>
-                </div>
-                <div class="mb-4">
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Save</button>
-                </div>
-            </form>
-            <form method="POST" action="{{ route('user.changepassword') }}">
-                @csrf
-                <div class="mb-4">
-                    <label for="current_password" class="block text-gray-700 font-bold mb-2">Current Password:</label>
-                    <input type="password" name="current_password" id="current_password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                </div>
-                <div class="mb-4">
-                    <label for="new_password" class="block text-gray-700 font-bold mb-2">New Password:</label>
-                    <input type="password" name="new_password" id="new_password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                </div>
-                <div class="mb-4">
-                    <label for="new_password_confirmation" class="block text-gray-700 font-bold mb-2">Confirm New Password:</label>
-                    <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                </div>
-                <div class="mb-4">
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Change Password</button>
-                </div>
-            </form>
-            <form method="POST" action="{{ route('user.deleteaccount') }}">
-                @csrf
-                <div class="mb-4">
-                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Delete Account</button>
-                </div>
-            </form>
         </div>
+
+        <form method="POST" action="{{ route('users.update', $user->id) }}">
+            @csrf
+            @method('PUT')
+
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="name">
+                    Name
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" name="name" value="{{ old('name', $user->name) }}" required autofocus>
+            </div>
+            <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Update
+                </button>
+            </div>
+        </form>
     </div>
 @endsection
