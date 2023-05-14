@@ -24,13 +24,16 @@
     <div id="app">
     <div class="fixed top-0 left-0 z-30 flex items-center">
     <button class="text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
-        <div class="space-y-2">
-            <span class="block w-8 h-0.5 " style="background-color:#A44A3F"></span>
-            <span class="block w-8 h-0.5 " style="background-color:#A44A3F"></span>
-            <span class="block w-5 h-0.5 " style="background-color:#A44A3F"></span>
-        </div>
+    <div class="relative backdrop-filter backdrop-blur-md bg-gray-200 p-2 focus:outline-none  rounded-lg">
+    <div class="space-y-2">
+        <span class="block w-8 h-0.5 bg-red-500"></span>
+        <span class="block w-8 h-0.5 bg-red-500"></span>
+        <span class="block w-5 h-0.5 bg-red-500"></span>
+    </div>
+</div>
+
     </button>
-    <a  href="/" class="bg-gradient-to-r from-purple-500 to-blue-500 text-cool-gray-200 text-2xl uppercase py-1 px-2 rounded-lg shadow-md m-1">
+    <a  href="/" class="bg-red-400 text-cool-gray-200 text-2xl uppercase py-1 px-2 rounded-lg shadow-md m-1">
         News Now
 </a>
 </div>
@@ -64,7 +67,7 @@
 </svg>
 
                <span class="flex-1 ml-3 whitespace-nowrap">Home</span>
-               <span class="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+               
             </a>
          </li>
          <li>
@@ -75,7 +78,6 @@
 </svg>
 
                <span class="flex-1 ml-3 whitespace-nowrap">News</span>
-               <span class="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
             </a>
          </li>
 
@@ -96,15 +98,37 @@
                  
 
                   @foreach ($tags as $tag)
-                  <li>
-                     <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">{{$tag->name}}</a>
-                  </li>
+                  <form action="{{ route('search.tag', $tag->name) }}" method="GET">
+    <li>
+        <button type="submit" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">{{ $tag->name }}</button>
+    </li>
+</form>
+
                     @endforeach
             </ul>
          </li>
              
          @endisset
-
+         @auth
+    @if (auth()->user()->level === 'admin')
+        <!-- <div class="pt-15 w-4/5 m-auto">
+            <a 
+                href="/blog/create"
+                class="bg-blue-500 z-30 uppercase  text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
+                Create post
+            </a>
+        </div> -->
+        <li>
+            <a href="/blog/create" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+            </svg>
+            <span class="flex-1 ml-3 whitespace-nowrap">Create Post</span>
+            </a>
+         </li>
+</form>
+    @endif
+@endauth
          @guest
          <li>
             <a href="{{ route('login') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -148,7 +172,7 @@
 
           </li>
          @endguest
-        
+   
       </ul>
    </div>
 </div>

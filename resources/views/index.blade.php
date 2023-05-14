@@ -2,10 +2,12 @@
 
 @section('content')
 
-<!-- top bar -->
-
-<div class="h-13 w-full bg-black">
+<div class="h-13 w-full bg-red-400">
+  <div class="flex items-center justify-center h-full">
+    <span class="text-white">By the people, for the people.</span>
+  </div>
 </div>
+
 
 @if($posts->count() > 0)
 <div>
