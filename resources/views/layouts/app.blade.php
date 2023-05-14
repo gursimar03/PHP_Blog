@@ -7,7 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'NewsNow') }}</title>
+    <title>{{ config('app.name', 'NewsNow') }}
+    <img src="{{ asset('images/logo/NEWS(1).png') }}" alt="Icon" class="inline-block w-8 h-8 mr-2">
+    </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

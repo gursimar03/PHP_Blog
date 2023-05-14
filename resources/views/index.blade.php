@@ -53,7 +53,7 @@
 
 
 <div class=" mx-auto py-8">
-    <h1 class="text-gray-700 font-bold text-2xl ml-5   ">Latest News</h1>
+    <h1 class="text-gray-700 font-bold text-2xl ml-5 ">Latest News</h1>
     <div class="w-20 h-3 bg-pink-600 mb-4"></div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
         @foreach ($posts->skip(1) as $post)
