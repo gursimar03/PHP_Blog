@@ -3,41 +3,59 @@
 @section('content')
     
 @if($posts->count() > 0)
-<div class="relative bg-cover bg-center h-96" style="background-image: url('{{ asset('images/' . $posts->first()->image_path) }}');">
-  <div class="absolute left-20 bottom-10  flex items-center justify-center">
-    <div class="max-w-lg mx-auto text-center">
-      <h1 class="text-4xl font-bold text-white leading-tight">{{ $posts->first()->title }}</h1>
-      <!-- author -->
-        <div class="text-gray-400 mt-4">{{ $posts->first()->user->name }}</div>
+<div>
+  <a href="/blog/{{ $posts->first()->slug }}">
+    <div class="relative bg-cover bg-center top-10 h-96 animate__animated animate__fadeIn" style="background-image: url('{{ asset('images/' . $posts->first()->image_path) }}');">
+    <h2 class="text-2xl font-bold m-4 text-white">Recent News</h2>  
+    <div class="absolute left-20 bottom-10 flex items-center justify-center">
+        <div class="max-w-lg mx-auto text-center">
+          <h1 class="text-4xl font-bold text-white leading-tight animate__animated animate__fadeInLeft">{{ $posts->first()->title }}</h1>
+          <div class="text-gray-400 mt-4 animate__animated animate__fadeInLeft">{{ $posts->first()->user->name }}</div>
+        </div>
+      </div>
+      <div class="absolute left-0 bottom-0 w-full h-16 bg-gradient-to-t from-black to-transparent"></div>
     </div>
-  </div>
-  <div class="absolute left-0 bottom-0 w-full h-16 bg-gradient-to-t from-black to-transparent"></div>
+  </a>
 </div>
 
- <!-- Top Recent posts -->
- <div class="container mx-auto py-8">
-    <h1 class="text-gray-700 font-bold text-2xl pb-4">Recent Posts</h1>
 
-    <div class="flex flex-wrap -mx-4">
-        @foreach ($posts->skip(1) as $index => $post)
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/2 px-4 mb-8 {{ $index % 2 == 0 ? 'order-2 lg:order-1' : 'order-1 lg:order-2' }}">
-                <div class="flex bg-white shadow-md rounded overflow-hidden">
-                    <div class="w-1/2">
-                        <img class="w-full h-64 object-cover" src="{{ asset('images/' . $post->image_path) }}" alt="{{ $post->title }}">
-                    </div>
-                    <div class="w-1/2 px-6 py-4">
-                        <div class="font-bold text-xl mb-2">{{ $post->title }}</div>
-                        <p class="text-gray-700 text-base">{{ Str::limit($post->body, 100) }}</p>
-                        <div class="mt-4">
-                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">{{ $post->created_at->format('d M Y') }}</span>
-                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">{{ $post->user->name }}</span>
-                        </div>
+<div class="flex flex-wrap justify-center m-6">
+  <div class="mx-5 mt-10 my-10 md:mx-20 md:my-20 lg:m-20 bg-gray-100">
+    <div class="bg-white shadow-lg p-4 h-64 font-semibold text-2xl font-sans max-w-md">
+      <p class="leading-relaxed">Welcome to our news blog website! Get ready to dive into a world of exciting news stories, insightful opinions, and thought-provoking analysis. Stay informed and entertained with us!</p>
+    </div>
+  </div>
+  <div class="mx-5 mt-10 my-10 md:mx-20 md:my-20 lg:m-20 bg-blue-500 w-80 md:w-96 h-60 text-white p-4 rounded-md">
+    <p class="text-lg font-bold mb-2">Join Our Community</p>
+    <p class="mb-5">Stay up-to-date with the latest news and connect with other readers.</p>
+    <a href="{{ route('register') }}" class=" bg-white text-blue-500 py-2 px-4 rounded-md hover:bg-blue-500 hover:text-white">Sign Up Now</a>
+  </div>
+</div>
+
+
+<div class=" mx-auto py-8">
+    <h1 class="text-gray-700 font-bold text-2xl pb-4">Recent Posts</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+        @foreach ($posts->skip(1) as $post)
+         <a href="/blog/{{ $post->slug }}">
+            <div class="bg-white shadow-md rounded  hover:text-pink-600 overflow-hidden">
+                <div class="w-full h-64">
+                    <img class="w-full h-full object-cover" src="{{ asset('images/' . $post->image_path) }}" alt="{{ $post->title }}">
+                </div>
+                <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2 ">{{ $post->title }}</div>
+                    <p class="text-gray-700 text-base">{{ Str::limit($post->body, 100) }}</p>
+                    <div class="mt-4">
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">{{ $post->created_at->format('d M Y') }}</span>
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">{{ $post->user->name }}</span>
                     </div>
                 </div>
             </div>
+            </a>
         @endforeach
     </div>
 </div>
+
 
 <div class="container">
 

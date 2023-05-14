@@ -18,4 +18,9 @@ class PagesController extends Controller
             ->with('posts', Post::orderBy('updated_at', 'DESC')->get())
             ->with('tags', $tags);
     }
+
+    public function show(Post $post)
+    {
+        return view('blog.show')->with('post', $post);
+    }
 }

@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
-
+Route::get('news/{id}', [\App\Http\Controllers\PostsController::class, 'show'])->name('blog.show');
 
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
 Route::get('/admin/postboard', [\App\Http\Controllers\AdminController::class, 'postboard'])->name('admin.postboard');

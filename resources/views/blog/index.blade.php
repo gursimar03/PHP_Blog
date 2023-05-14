@@ -22,7 +22,7 @@
         <div class="pt-15 w-4/5 m-auto">
             <a 
                 href="/blog/create"
-                class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
+                class="bg-blue-500 z-30 uppercase  text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
                 Create post
             </a>
         </div>
