@@ -8,10 +8,10 @@ Gursimar Singh Ply (D00251867) <br>
 Lee Ze Jee 
 
 ## Technologies used
-Laravel 8 <img src="https://laravel.com/assets/img/components/logo-laravel.svg" alt="Laravel logo" width="20" height="20"> <br>
-MySQL <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL logo" width="20" height="20"> <br>
-Tailwind CSS <img src="https://tailwindcss.com/_next/static/media/twitter-square.5c5d03b5c5d03b5d9c5aaec7a8d38c35.png" alt="Tailwind CSS logo" width="20" height="20"> <br>
-Flowbite <img src="https://flowbite.com/img/logo-blue.svg" alt="Flowbite logo" width="20" height="20">
+Laravel 8 <img src="https://laravel.com/assets/img/components/logo-laravel.svg" alt="Laravel logo" width="40" height="40"> <br>
+MySQL <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL logo" width="40" height="40"> <br>
+Tailwind CSS <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq0F6HGBOunbnCsh585o99GCZnUA7hKef7ouZxiRyO&s" alt="Tailwind CSS logo" width="40" height="40"> <br>
+Flowbite <img src="https://skeleton.ghost.io/content/images/2023/01/blog-tailwind.jpg" alt="Flowbite logo" width="40" height="40">
 <br>
 
 ## Requirements
