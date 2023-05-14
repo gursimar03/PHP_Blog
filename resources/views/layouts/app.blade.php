@@ -23,9 +23,9 @@
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
 <div id="app">
 
-<div class="fixed top-0 left-0 z-30 flex items-center">
-  <button class="text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
-    <div class="relative backdrop-filter backdrop-blur-md bg-gray-200 p-2 focus:outline-none rounded-lg">
+<div class="fixed bg-pink-400 mt-4 top-0 left-0 z-30 flex items-center">
+  <button class="text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+    <div class="relative backdrop-filter backdrop-blur-md bg-gray-200 p-2 focus:outline-none ">
       <div class="space-y-2">
         <span class="block w-8 h-0.5 bg-red-500"></span>
         <span class="block w-8 h-0.5 bg-red-500"></span>
@@ -34,9 +34,10 @@
     </div>
   </button>
   <a href="/" class="left-0">
-    <img src="{{ asset('images/logo/t-NEWS.png') }}" alt="News Now Logo" class="h-36 top-0">  
+    <img src="{{ asset('images/logo/t-NEWS.png') }}" alt="News Now Logo" class="p-2 h-20 top-0">  
   </a>
 </div>
+
 
 
 
@@ -67,7 +68,7 @@
   <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
 </svg>
 
-               <span class="flex-1 ml-3 whitespace-nowrap">Home</span>
+               <span class="flex-1 ml-3 hover:text-pink-600 whitespace-nowrap">Home</span>
                
             </a>
          </li>
@@ -78,7 +79,7 @@
   <path d="M18.75 6.75h1.875c.621 0 1.125.504 1.125 1.125V18a1.5 1.5 0 01-3 0V6.75z" />
 </svg>
 
-               <span class="flex-1 ml-3 whitespace-nowrap">News</span>
+               <span class="flex-1 ml-3  hover:text-pink-600 whitespace-nowrap">News</span>
             </a>
          </li>
 
@@ -92,7 +93,7 @@
   <path fill-rule="evenodd" d="M12 2.25A6.75 6.75 0 005.25 9v.75a8.217 8.217 0 01-2.119 5.52.75.75 0 00.298 1.206c1.544.57 3.16.99 4.831 1.243a3.75 3.75 0 107.48 0 24.583 24.583 0 004.83-1.244.75.75 0 00.298-1.205 8.217 8.217 0 01-2.118-5.52V9A6.75 6.75 0 0012 2.25zM9.75 18c0-.034 0-.067.002-.1a25.05 25.05 0 004.496 0l.002.1a2.25 2.25 0 11-4.5 0z" clip-rule="evenodd" />
 </svg>
 
-                  <span class="flex-1 ml-3 text-left whitespace-nowrap">Topics</span>
+                  <span class="flex-1 ml-3 text-left hover:text-pink-600 whitespace-nowrap">Topics</span>
                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
             </button>
             <ul id="dropdown-example" class="hidden py-2 space-y-2">
@@ -101,7 +102,7 @@
                   @foreach ($tags as $tag)
                   <form action="{{ route('search.tag', $tag->name) }}" method="GET">
     <li>
-        <button type="submit" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">{{ $tag->name }}</button>
+        <button type="submit" class="flex hover:text-pink-600 items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">{{ $tag->name }}</button>
     </li>
 </form>
 
@@ -112,19 +113,13 @@
          @endisset
          @auth
     @if (auth()->user()->level === 'admin')
-        <!-- <div class="pt-15 w-4/5 m-auto">
-            <a 
-                href="/blog/create"
-                class="bg-blue-500 z-30 uppercase  text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
-                Create post
-            </a>
-        </div> -->
+     
         <li>
             <a href="/blog/create" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                 <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
             </svg>
-            <span class="flex-1 ml-3 whitespace-nowrap">Create Post</span>
+            <span class="flex-1 ml-3 hover:text-pink-600 whitespace-nowrap">Create Post</span>
             </a>
          </li>
 </form>
@@ -136,7 +131,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
   <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
 </svg>
- <span class="flex-1 ml-3 whitespace-nowrap">Login</span>
+ <span class="flex-1 ml-3 hover:text-pink-600 whitespace-nowrap">Login</span>
             </a>
          </li>
          <li>
@@ -144,7 +139,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
   <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
 </svg>
-  <span class="flex-1 ml-3 whitespace-nowrap">Register</span>
+  <span class="flex-1 ml-3 hover:text-pink-600 whitespace-nowrap">Register</span>
             </a>
          </li>
          @else
@@ -155,7 +150,7 @@
   <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
 </svg>
 
-                <span class="flex-1 ml-3 whitespace-nowrap">{{ Auth::user()->name }}</span>
+                <span class="flex-1 ml-3 hover:text-pink-600 whitespace-nowrap">{{ Auth::user()->name }}</span>
              </a>
           </li>
 
@@ -167,7 +162,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
             <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z" clip-rule="evenodd" />
         </svg>
-        <span class="flex-1 ml-3 whitespace-nowrap">Logout</span>
+        <span class="flex-1 ml-3  hover:text-red-600 whitespace-nowrap">Logout</span>
     </a>
 </form>
 

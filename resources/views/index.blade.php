@@ -32,29 +32,21 @@
     @isset($tags)
 
     @foreach ($tags as $tag)
-    <li class=" text-2xl">
-        <a href="#" class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">{{ $tag->name }}</a>
-    </li>
+   
+    <form action="{{ route('search.tag', $tag->name) }}" method="GET">
+      <li class=" text-2xl">
+          <button type="submit" class="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">{{ $tag->name }}</button>
+      </li>
+    </form>
+   
     @endforeach    
     @endisset
     <li class="mr-2">
-    <a href="#" class="inline-block px-5 py-4  text-white bg-pink-600 hover:bg-pink-700">{{ __('BECOME A MEMBER!') }}</a>
+    <a href="{{ route('register') }}" class="inline-block px-5 py-4  text-white bg-pink-600 hover:bg-pink-700">{{ __('BECOME A MEMBER!') }}</a>
   </li>
 </ul>
 
 
-  <!-- <div class="flex flex-wrap justify-center m-6">
-    <div class="mx-5 mt-10 my-10 md:mx-20 md:my-20 lg:m-20 bg-gray-100">
-      <div class="bg-white shadow-lg p-4 h-64 font-semibold text-2xl font-sans max-w-md">
-        <p class="leading-relaxed">Welcome to our news blog website! Get ready to dive into a world of exciting news stories, insightful opinions, and thought-provoking analysis. Stay informed and entertained with us!</p>
-      </div>
-    </div>
-    <div class="mx-5 mt-10 my-10 md:mx-20 md:my-20 lg:m-20 bg-blue-500 w-80 md:w-96 h-60 text-white p-4 rounded-md">
-      <p class="text-lg font-bold mb-2">Join Our Community</p>
-      <p class="mb-5">Stay up-to-date with the latest news and connect with other readers.</p>
-      <a href="{{ route('register') }}" class=" bg-white text-blue-500 py-2 px-4 rounded-md hover:bg-blue-500 hover:text-white">Sign Up Now</a>
-    </div>
-  </div> -->
 
 
 <div class=" mx-auto py-8">
@@ -79,88 +71,6 @@
         @endforeach
     </div>
 </div>
-
-
-<div class="container">
-
-
-
-<div class="contact-form">
-  <h2 class="contact-form__title">Contact Us</h2>
-  <!-- <form>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" class="contact-form__input" required>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" class="contact-form__input" required>
-
-    <label for="message">Message:</label>
-    <textarea id="message" name="message" class="contact-form__input" rows="5" required></textarea>
-
-    <button type="submit" class="contact-form__button">Send</button>
-  </form> -->
-  <form method="POST" action="{{ route('contact.us.store') }}" id="contactUSForm">
-                            {{ csrf_field() }}
-                              
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <strong>Name:</strong>
-                                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
-                                        @if ($errors->has('name'))
-                                            <span class="text-danger">{{ $errors->first('name') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <strong>Email:</strong>
-                                        <input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
-                                        @if ($errors->has('email'))
-                                            <span class="text-danger">{{ $errors->first('email') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <strong>Phone:</strong>
-                                        <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone') }}">
-                                        @if ($errors->has('phone'))
-                                            <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <strong>Subject:</strong>
-                                        <input type="text" name="subject" class="form-control" placeholder="Subject" value="{{ old('subject') }}">
-                                        @if ($errors->has('subject'))
-                                            <span class="text-danger">{{ $errors->first('subject') }}</span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <strong>Message:</strong>
-                                        <textarea name="message" rows="3" class="form-control">{{ old('message') }}</textarea>
-                                        @if ($errors->has('message'))
-                                            <span class="text-danger">{{ $errors->first('message') }}</span>
-                                        @endif
-                                    </div>  
-                                </div>
-                            </div>
-                     
-                            <div class="form-group text-center">
-                                <button class="btn btn-success btn-submit">Submit</button>
-                            </div>
-                        </form>
-</div>
-
-
 
 
 </div>

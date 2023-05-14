@@ -60,30 +60,31 @@
             <p class="text-gray-600">Please <a href="{{ route('login') }}" class="font-medium  hover:text-pink-600 underline">sign in</a> or <a href="{{ route('register') }}" class="font-medium hover:text-pink-600 underline">register</a> to leave a comment.</p>
         </div>
     @endauth
-    <!-- comments list -->
-    <div class="mt-4">
-
-        @isset($comments)
+   <!-- comments list -->
+<div class="mt-4">
+    @isset($comments)
         @foreach ($comments as $comment)
             <div class="bg-gray-100 rounded-lg px-4 py-3 mt-4">
                 <div class="flex items-center mb-2">
                     <div class="h-8 w-8 rounded-full bg-gray-400 mr-2"></div>
                     <p class="text-gray-700 font-bold">{{ $comment->user->name }}</p>
+                    @if (Auth::check() && $comment->user_id === Auth::user()->id)
+                        <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="ml-2 text-red-600 hover:text-red-800 focus:outline-none">
+                                Delete
+                            </button>
+                        </form>
+                    @endif
                 </div>
                 <p class="text-gray-700">{{ $comment->body }}</p>
                 <p class="text-gray-600 text-sm mt-2">{{ date('jS M Y', strtotime($comment->created_at)) }}</p>
-                @can('delete', $comment)
-                    <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" class="mt-2">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="text-sm text-red-600 font-medium">Delete</button>
-                    </form>
-                @endcan
             </div>
         @endforeach
-        @endisset
-       
-    </div>
+    @endisset
+</div>
+
 </div>
 
 
