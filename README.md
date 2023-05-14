@@ -20,6 +20,12 @@ Flowbite <img src="https://skeleton.ghost.io/content/images/2023/01/blog-tailwin
 
 ## Description
 This is a News Blog project built with Laravel 8, MySQL, Tailwind CSS, and Flowbite. It allows two types of users: admins and regular users. Admins have the ability to create, read, update, and delete posts, as well as manage tags and comments. Regular users can read and comment on posts, but cannot create or edit them.
+
+## Sample Images
+![Sample Image 1](public/images/sample/1.jpg)
+![Sample Image 2](public/images/sample/2.jpg)
+![Sample Image 3](public/images/sample/3.jpg)
+
 ## Usage <br>
 Setting up your development environment on your local machine: <br>
 ```
