@@ -46,7 +46,7 @@ Route::post('change-password',[\App\Http\Controllers\UserController::class,'upda
 //search routes
 
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
--
+Route::get('/search/tag/{tag}', [\App\Http\Controllers\SearchController::class, 'byTag'])->name('search.tag');
 
 //comments routes
 

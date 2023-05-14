@@ -57,7 +57,7 @@
         </div>
     @else
         <div class="mt-4">
-            <p class="text-gray-600">Please <a href="{{ route('login') }}" class="font-medium underline">sign in</a> or <a href="{{ route('register') }}" class="font-medium underline">register</a> to leave a comment.</p>
+            <p class="text-gray-600">Please <a href="{{ route('login') }}" class="font-medium  hover:text-pink-600 underline">sign in</a> or <a href="{{ route('register') }}" class="font-medium hover:text-pink-600 underline">register</a> to leave a comment.</p>
         </div>
     @endauth
     <!-- comments list -->

@@ -21,22 +21,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
-    <div id="app">
-    <div class="fixed top-0 left-0 z-30 flex items-center">
-    <button class="text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
-    <div class="relative backdrop-filter backdrop-blur-md bg-gray-200 p-2 focus:outline-none  rounded-lg">
-    <div class="space-y-2">
+<div id="app">
+
+<div class="fixed top-0 left-0 z-30 flex items-center">
+  <button class="text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+    <div class="relative backdrop-filter backdrop-blur-md bg-gray-200 p-2 focus:outline-none rounded-lg">
+      <div class="space-y-2">
         <span class="block w-8 h-0.5 bg-red-500"></span>
         <span class="block w-8 h-0.5 bg-red-500"></span>
         <span class="block w-5 h-0.5 bg-red-500"></span>
+      </div>
     </div>
+  </button>
+  <a href="/" class="left-0">
+    <img src="{{ asset('images/logo/t-NEWS.png') }}" alt="News Now Logo" class="h-36 top-0">  
+  </a>
 </div>
 
-    </button>
-    <a  href="/" class="bg-red-400 text-cool-gray-200 text-2xl uppercase py-1 px-2 rounded-lg shadow-md m-1">
-        News Now
-</a>
-</div>
 
 
 <!-- drawer component -->

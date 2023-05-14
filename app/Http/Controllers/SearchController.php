@@ -22,7 +22,8 @@ class SearchController extends Controller
             $post->tags = $post->tags()->get();
         }
     
-        return view('layouts.search')->with('posts', $posts)->with('tags', $tags);
+        return view('layouts.search')->with('posts', $posts)->with('tags', $tags)
+                                     ->with('query', $query);
     }
     
 
@@ -40,6 +41,7 @@ class SearchController extends Controller
         // Get all the tags
         $tags = Tag::all();
         
-        return view('layouts.search')->with('posts', $posts)->with('tags', $tags);
+        return view('layouts.search')->with('posts', $posts)->with('tags', $tags) 
+                                     ->with('query', $tag);
     }
 }
