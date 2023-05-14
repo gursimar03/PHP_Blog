@@ -48,7 +48,7 @@
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Change password</h3>
                 <form   class="space-y-6" method="POST" action="{{ route('logout') }}">
                     <div>
                         <label for="old_pass" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Current Password</label>
