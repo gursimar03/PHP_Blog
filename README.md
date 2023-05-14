@@ -1,10 +1,11 @@
-## Laravel 8 Complete Blog
+## Laravel 8 News Blog
 
-This repository is linked to [this youtube video](https://www.youtube.com/watch?v=HKJDLXsTr8A&t=4710s) where I show you how to create a complete blog in Laravel 8 using best practices.
+This is a News Blog project built with Laravel 8. It allows users to read, create, edit, and delete posts, as well as add and remove tags to posts. Users can also leave comments on posts. The project includes authentication, with users able to register, log in, and log out.
 
-•	Author: Code With Dary <br>
-•	Twitter: [@codewithdary](https://twitter.com/codewithdary) <br>
-•	Instagram: [@codewithdary](https://www.instagram.com/codewithdary/) <br>
+## Team Members
+
+Gursimar Singh Ply (D00251867)
+Lee Ze Jee 
 
 ## Requirements
 •	PHP 7.3 or higher <br>
@@ -13,13 +14,13 @@ This repository is linked to [this youtube video](https://www.youtube.com/watch?
 ## Usage <br>
 Setting up your development environment on your local machine: <br>
 ```
-git clone git@github.com:codewithdary/laravel-8-complete-blog.git
-cd laravel-8-complete-blog
+git clone git@github.com:gursimar03/PHP_Blog.git
+cd PHP_Blog
 cp .env.example .env
 composer install
 php artisan key:generate
 php artisan cache:clear && php artisan config:clear
-php artisan serve
+
 ```
 
 ## Before starting <br>
@@ -40,10 +41,16 @@ DB_USERNAME={USERNAME}
 DB_PASSWORD={PASSWORD}
 ```
 
-Migrate the tables
+Migrate the tables and populate it
 ```
 php artisan migrate
+php artisan db:seed
 ```
 
-## Contributing
-Do not hesitate to contribute to the project by adapting or adding features ! Bug reports or pull requests are welcome.
+
+Everything Should be ready to go. 
+Use the command below to start the application
+
+```
+php artisan serve
+```
