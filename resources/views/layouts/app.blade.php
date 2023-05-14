@@ -20,13 +20,19 @@
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">
-
-<!-- drawer init and show -->
-<div class="text-center">
-   <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
-   Show navigation
-   </button>
+    <div class="fixed top-0 left-0 z-30 flex items-center">
+    <button class="text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+        <div class="space-y-2">
+            <span class="block w-8 h-0.5 bg-white"></span>
+            <span class="block w-8 h-0.5 bg-white"></span>
+            <span class="block w-5 h-0.5 bg-white"></span>
+        </div>
+    </button>
+    <a  href="/" class="bg-gradient-to-r from-purple-500 to-blue-500 text-cool-gray-200 text-2xl uppercase py-1 px-2 rounded-lg shadow-md ml-2">
+        News Now
+</a>
 </div>
+
 
 <!-- drawer component -->
 <div id="drawer-navigation" class="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
