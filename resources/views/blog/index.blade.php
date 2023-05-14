@@ -4,11 +4,13 @@
 <div class="w-4/5 m-auto text-center">
     <div class="py-15 border-b border-gray-200">
         <h1 class="text-6xl">
-            News
+            <span class="border-b-4 border-pink-600">N</span>ews
         </h1>
+       
     </div>
     
 </div>
+
 
 @if (session()->has('message'))
     <div class="w-4/5 m-auto mt-10 pl-2">
