@@ -23,10 +23,15 @@ This is a News Blog project built with Laravel 8, MySQL, Tailwind CSS, and Flowb
 
 ## Sample Images
 <h3> Home Page </h1>
+
 ![Sample Image 1](public/images/sample/1.jpg)
+
 <h3> Post View </h1>
+
 ![Sample Image 2](public/images/sample/2.jpg)
+
 <h3> Nav Bar </h1>
+
 ![Sample Image 3](public/images/sample/3.jpg)
 
 ## Usage <br>
