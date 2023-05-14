@@ -41,9 +41,12 @@
    
     @endforeach    
     @endisset
-    <li class="mr-2">
+    
+  @guest
+  <li class="mr-2">
     <a href="{{ route('register') }}" class="inline-block px-5 py-4  text-white bg-pink-600 hover:bg-pink-700">{{ __('BECOME A MEMBER!') }}</a>
   </li>
+  @endguest
 </ul>
 
 

@@ -53,12 +53,24 @@
             </label>
         </div>
         
-        <button    
-            type="submit"
-            class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
-            Submit Post
-        </button>
+        <div>
+            <lable for="tags">Tags</lable>
+            <select name="tags[]" class="w-full js-choices" multiple>
+    @foreach($alltags as $tag)
+        <option value="{{ $tag->id }}" @if($tags->contains($tag->id)) selected @endif>{{ $tag->name }}</option>
+    @endforeach
+</select>
+
+</select>
+
+            <button    
+                type="submit"
+                class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+                Submit Post
+            </button>
+        </div>
     </form>
+</div>
 </div>
 
 

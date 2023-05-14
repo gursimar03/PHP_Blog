@@ -88,14 +88,18 @@ class PostsController extends Controller
     {
         // get tags and comments for the post
         $post = Post::where('slug', $slug)->first();
+    
+        if (!$post) {
+            abort(404); // or throw new Exception('Post not found')
+        }
+    
         $tags = $post->tags;
         $comments = $post->comments;
        
         return view('blog.show')
-            ->with('post', Post::where('slug', $slug)->first())
+            ->with('post', $post)
             ->with('tags', $tags)
             ->with('comments', $comments);
-    
     }
 
     /**
@@ -106,10 +110,15 @@ class PostsController extends Controller
      */
     public function edit($slug)
     {
+        $alltags = Tag::all();
+        $post = Post::where('slug', $slug)->with('tags')->first();
+        $tags = $post->tags;
+    
         return view('blog.edit')
-            ->with('post', Post::where('slug', $slug)->first());
+            ->with('post', $post)
+            ->with('alltags', $alltags)
+            ->with('tags', $tags);
     }
-
     /**
      * Update the specified resource in storage.
      *
