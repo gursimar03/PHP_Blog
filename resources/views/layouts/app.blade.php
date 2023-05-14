@@ -34,7 +34,7 @@
     </div>
   </button>
   <a href="/" class="left-0">
-    <img src="{{ asset('images/logo/t-NEWS.png') }}" alt="News Now Logo" class="p-2 h-20 top-0">  
+    <img src="{{ asset('images/logo/t-NEWS1.png') }}" alt="News Now Logo" class="p-2 h-24 top-0">  
   </a>
 </div>
 
