@@ -30,7 +30,7 @@
             <span class="block w-5 h-0.5 " style="background-color:#A44A3F"></span>
         </div>
     </button>
-    <a  href="/" class="bg-gradient-to-r from-purple-500 to-blue-500 text-cool-gray-200 text-2xl uppercase py-1 px-2 rounded-lg shadow-md ml-2">
+    <a  href="/" class="bg-gradient-to-r from-purple-500 to-blue-500 text-cool-gray-200 text-2xl uppercase py-1 px-2 rounded-lg shadow-md m-1">
         News Now
 </a>
 </div>

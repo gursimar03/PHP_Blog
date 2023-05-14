@@ -12,7 +12,7 @@
                 </div>
             @endif
         @endauth
-    <div class="container mx-auto py-8">
+    <div class=" mx-auto py-8">
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <h1 class="text-gray-700 font-bold text-2xl pb-4">{{ Auth::user()->name }}</h1>
             <p class="text-gray-700 pb-4">{{ Auth::user()->email }}</p>

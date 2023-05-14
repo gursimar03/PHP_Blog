@@ -53,5 +53,9 @@ Route::get('/search/tag/{tag}', [\App\Http\Controllers\SearchController::class, 
 Route::post('/comments', [\App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
 Route::delete('/comments/{comment}', [\App\Http\Controllers\CommentController::class, 'destroy'])->name('comments.destroy');
 
+//Contact us routes
+Route::get('contact-us', [\App\Http\Controllers\ContactController::class, 'index']);
+Route::post('contact-us', [\App\Http\Controllers\ContactController::class, 'store'])->name('contact.us.store');
+
 
 

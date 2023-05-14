@@ -35,7 +35,7 @@
 <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
     <!-- comments header -->
     <div class="flex items-center justify-between border-b-2 border-gray-300 pb-4">
-        <h2 class="text-xl font-medium text-gray-900">Comments</h2>
+        <h2 class="text-xl font-medium text-gray-900">Comments ({{ $comments->count() }})</h2>
         @auth
             <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded" id="show-comment-form">Add Comment</button>
         @endauth
@@ -66,8 +66,12 @@
         @isset($comments)
         @foreach ($comments as $comment)
             <div class="bg-gray-100 rounded-lg px-4 py-3 mt-4">
-                <p class="text-gray-700">{{ $comment->comment }}</p>
-                <p class="text-gray-600 text-sm mt-2">{{ $comment->user->name }} - {{ date('jS M Y', strtotime($comment->created_at)) }}</p>
+                <div class="flex items-center mb-2">
+                    <div class="h-8 w-8 rounded-full bg-gray-400 mr-2"></div>
+                    <p class="text-gray-700 font-bold">{{ $comment->user->name }}</p>
+                </div>
+                <p class="text-gray-700">{{ $comment->body }}</p>
+                <p class="text-gray-600 text-sm mt-2">{{ date('jS M Y', strtotime($comment->created_at)) }}</p>
                 @can('delete', $comment)
                     <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" class="mt-2">
                         @csrf
@@ -81,6 +85,7 @@
        
     </div>
 </div>
+
 
 
 <script>

@@ -38,4 +38,8 @@ class Post extends Model
         $this->tags()->sync($tags);
     }
     
+        public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

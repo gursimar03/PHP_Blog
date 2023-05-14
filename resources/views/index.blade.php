@@ -1,13 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    
+
+<!-- top bar -->
+
+<div class="h-13 w-full bg-black">
+</div>
+
 @if($posts->count() > 0)
 <div>
   <a href="/blog/{{ $posts->first()->slug }}">
-    <div class="relative bg-cover bg-center top-10 h-96 animate__animated animate__fadeIn" style="background-image: url('{{ asset('images/' . $posts->first()->image_path) }}');">
+    <div class="relative bg-cover  bg-center  h-96 animate__animated animate__fadeIn" style="background-image: url('{{ asset('images/' . $posts->first()->image_path) }}');">
     <h2 class="text-2xl font-bold m-4 text-white">Recent News</h2>  
-    <div class="absolute left-20 bottom-10 flex items-center justify-center">
+    <div class="absolute  left-20 bottom-10 flex items-center justify-center">
         <div class="max-w-lg mx-auto text-center">
           <h1 class="text-4xl  hover:text-pink-600 font-bold text-white leading-tight animate__animated animate__fadeInLeft">{{ $posts->first()->title }}</h1>
           <div class="text-gray-400 mt-4 animate__animated animate__fadeInLeft">{{ $posts->first()->user->name }}</div>
@@ -38,7 +43,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
         @foreach ($posts->skip(1) as $post)
          <a href="/blog/{{ $post->slug }}">
-            <div class="bg-white shadow-md rounded  hover:text-pink-600 overflow-hidden">
+            <div class="bg-white shadow-md hover:shadow-2xl rounded  hover:text-pink-600 overflow-hidden">
                 <div class="w-full h-64">
                     <img class="w-full h-full object-cover" src="{{ asset('images/' . $post->image_path) }}" alt="{{ $post->title }}">
                 </div>
@@ -70,7 +75,7 @@
 
 <div class="contact-form">
   <h2 class="contact-form__title">Contact Us</h2>
-  <form>
+  <!-- <form>
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" class="contact-form__input" required>
 
@@ -81,7 +86,66 @@
     <textarea id="message" name="message" class="contact-form__input" rows="5" required></textarea>
 
     <button type="submit" class="contact-form__button">Send</button>
-  </form>
+  </form> -->
+  <form method="POST" action="{{ route('contact.us.store') }}" id="contactUSForm">
+                            {{ csrf_field() }}
+                              
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <strong>Name:</strong>
+                                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
+                                        @if ($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <strong>Email:</strong>
+                                        <input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
+                                        @if ($errors->has('email'))
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <strong>Phone:</strong>
+                                        <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone') }}">
+                                        @if ($errors->has('phone'))
+                                            <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <strong>Subject:</strong>
+                                        <input type="text" name="subject" class="form-control" placeholder="Subject" value="{{ old('subject') }}">
+                                        @if ($errors->has('subject'))
+                                            <span class="text-danger">{{ $errors->first('subject') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <strong>Message:</strong>
+                                        <textarea name="message" rows="3" class="form-control">{{ old('message') }}</textarea>
+                                        @if ($errors->has('message'))
+                                            <span class="text-danger">{{ $errors->first('message') }}</span>
+                                        @endif
+                                    </div>  
+                                </div>
+                            </div>
+                     
+                            <div class="form-group text-center">
+                                <button class="btn btn-success btn-submit">Submit</button>
+                            </div>
+                        </form>
 </div>
 
 

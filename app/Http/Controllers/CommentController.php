@@ -9,12 +9,14 @@ class CommentController extends Controller
     {
         $comment = new Comment;
         $comment->user_id = auth()->id();
-        $comment->post_id = $request->post_id;
         $comment->body = $request->comment;
-        $comment->save();
-
+    
+        $post = Post::findOrFail($request->post_id);
+        $post->comments()->save($comment);
+    
         return back();
     }
+    
 
     public function destroy(Comment $comment)
     {
