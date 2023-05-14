@@ -4,13 +4,22 @@ This is a News Blog project built with Laravel 8. It allows users to read, creat
 
 ## Team Members
 
-Gursimar Singh Ply (D00251867)
+Gursimar Singh Ply (D00251867) <br>
 Lee Ze Jee 
+
+## Technologies used
+Laravel 8 <img src="https://laravel.com/assets/img/components/logo-laravel.svg" alt="Laravel logo" width="20" height="20"> <br>
+MySQL <img src="https://www.mysql.com/common/logos/logo-mysql-170x115.png" alt="MySQL logo" width="20" height="20"> <br>
+Tailwind CSS <img src="https://tailwindcss.com/_next/static/media/twitter-square.5c5d03b5c5d03b5d9c5aaec7a8d38c35.png" alt="Tailwind CSS logo" width="20" height="20"> <br>
+Flowbite <img src="https://flowbite.com/img/logo-blue.svg" alt="Flowbite logo" width="20" height="20">
+<br>
 
 ## Requirements
 •	PHP 7.3 or higher <br>
 •	Node 12.13.0 or higher <br>
 
+## Description
+This is a News Blog project built with Laravel 8, MySQL, Tailwind CSS, and Flowbite. It allows two types of users: admins and regular users. Admins have the ability to create, read, update, and delete posts, as well as manage tags and comments. Regular users can read and comment on posts, but cannot create or edit them.
 ## Usage <br>
 Setting up your development environment on your local machine: <br>
 ```
