@@ -48,5 +48,10 @@ Route::post('change-password',[\App\Http\Controllers\UserController::class,'upda
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 Route::get('/search/tag/{tag}', [\App\Http\Controllers\SearchController::class, 'byTag'])->name('search.tag');
 
+//comments routes
+
+Route::post('/comments', [\App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
+Route::delete('/comments/{comment}', [\App\Http\Controllers\CommentController::class, 'destroy'])->name('comments.destroy');
+
 
 

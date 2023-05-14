@@ -9,7 +9,7 @@
     <h2 class="text-2xl font-bold m-4 text-white">Recent News</h2>  
     <div class="absolute left-20 bottom-10 flex items-center justify-center">
         <div class="max-w-lg mx-auto text-center">
-          <h1 class="text-4xl font-bold text-white leading-tight animate__animated animate__fadeInLeft">{{ $posts->first()->title }}</h1>
+          <h1 class="text-4xl  hover:text-pink-600 font-bold text-white leading-tight animate__animated animate__fadeInLeft">{{ $posts->first()->title }}</h1>
           <div class="text-gray-400 mt-4 animate__animated animate__fadeInLeft">{{ $posts->first()->user->name }}</div>
         </div>
       </div>

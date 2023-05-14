@@ -86,12 +86,15 @@ class PostsController extends Controller
      */
     public function show($slug)
     {
-        // get tags for the post
-        $tags = Post::where('slug', $slug)->first()->tags;
-
+        // get tags and comments for the post
+        $post = Post::where('slug', $slug)->first();
+        $tags = $post->tags;
+        $comments = $post->comments;
+       
         return view('blog.show')
             ->with('post', Post::where('slug', $slug)->first())
-            ->with('tags', $tags);
+            ->with('tags', $tags)
+            ->with('comments', $comments);
     
     }
 

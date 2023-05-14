@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mx-auto py-8">
+    <div class=" mx-auto py-8">
         <h1 class="text-gray-700 font-bold text-2xl pb-4">All Posts</h1>
 
         <div class="flex flex-wrap -mx-4">
